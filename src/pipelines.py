@@ -11,5 +11,5 @@ def get_iris_pipeline():
 def get_wine_pipeline():
     return Pipeline([
         ('scaler', StandardScaler()),
-        ('pca', PCA(n_components=2)),
+        ('pca', PCA(n_components=.9, svd_solver='full')),
     ])
