@@ -10,10 +10,10 @@ class Winsorizer(BaseEstimator, TransformerMixin):
 
     def fit(self, X, y=None):
         X_ = pd.DataFrame(X)
-        q1 = X_.quantile(0.25)
-        q3 = X_.quantile(0.75)
-        self.lower_bound = q3 - 1.5 * q1
-        self.upper_bound = q3 + 1.5 * q3
+        q1 = X_.quantile(0.1)
+        q3 = X_.quantile(0.9)
+        self.lower_bound = q1 # q3 - 1.5 * q1
+        self.upper_bound = q3 # q3 + 1.5 * q3
         return self
 
     def transform(self, X, y=None):
